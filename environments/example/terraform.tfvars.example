@@ -1,0 +1,20 @@
+# Copy this file to terraform.tfvars and fill in your values.
+# terraform.tfvars is gitignored — never commit real account IDs or ARNs.
+
+aws_region     = "us-east-1"
+aws_account_id = "123456789012"
+environment    = "prod"
+
+# List all VPC IDs you want flow logs enabled on
+vpc_ids = [
+  "vpc-xxxxxxxxxxxxxxxxx",
+  "vpc-yyyyyyyyyyyyyyyyy",
+]
+
+# IAM roles/accounts allowed to assume the security read-only role
+trusted_account_arns = [
+  "arn:aws:iam::123456789012:role/SecurityTeam",
+]
+
+# Email to receive CRITICAL and HIGH security findings
+alert_email = "security@yourorg.com"

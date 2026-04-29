@@ -1,0 +1,55 @@
+name: Terraform Validate & Security Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Format, Validate & Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "~1.5"
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+        working-directory: .
+
+      - name: Terraform Init (iam-guardrails)
+        run: terraform init -backend=false
+        working-directory: modules/iam-guardrails
+
+      - name: Terraform Validate (iam-guardrails)
+        run: terraform validate
+        working-directory: modules/iam-guardrails
+
+      - name: Terraform Init (logging-baseline)
+        run: terraform init -backend=false
+        working-directory: modules/logging-baseline
+
+      - name: Terraform Validate (logging-baseline)
+        run: terraform validate
+        working-directory: modules/logging-baseline
+
+      - name: Terraform Init (security-hub)
+        run: terraform init -backend=false
+        working-directory: modules/security-hub
+
+      - name: Terraform Validate (security-hub)
+        run: terraform validate
+        working-directory: modules/security-hub
+
+      - name: Run tfsec (Terraform security scanner)
+        uses: aquasecurity/tfsec-action@v1.0.3
+        with:
+          soft_fail: true
+          additional_args: --minimum-severity HIGH
