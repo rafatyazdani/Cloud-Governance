@@ -205,10 +205,22 @@ Critical findings route automatically to SNS. Detection without alerting is dete
 
 ---
 
+## Related artifacts in the portfolio
+
+- **Cloud-native CRQ** — the financial exposure modelling layer that these controls feed into lives at [`cyber-risk-quantification`](https://github.com/rafatyazdani/cyber-risk-quantification).
+- **Maturity scoring** of the program these controls support lives at [`maturity-scoring-engine`](https://github.com/rafatyazdani/maturity-scoring-engine).
+- **AI governance overlay** for cloud-deployed AI systems: [`ai-governance-toolkit`](https://github.com/rafatyazdani/ai-governance-toolkit).
+
+---
+
 ## License
 
 Apache 2.0 — free to use, adapt, and deploy in commercial contexts with attribution.
 
 ---
 
-*Built by a CISSP + CPA with 10+ years in GRC and cloud security strategy.*
+**Built by Rafat Yazdani** — CPA · CISSP · CISA · CCSK · AWS Certified
+Security Strategy & Cyber Risk Quantification — Accenture Security
+
+> Methodology backbone: **CRQ-F Framework** (Cyber Risk Quantification — Financial).
+> Portfolio overview: [github.com/rafatyazdani](https://github.com/rafatyazdani) — Methodology · Quantification math · Consulting products · Governance & maturity · Operations · Board output.
